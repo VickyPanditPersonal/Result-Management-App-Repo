@@ -1,0 +1,13 @@
+{
+    "app": {
+        "server": {
+            "port": 3000,
+            "JWT_SECRET": "Vicky",
+            "JWT_TOKEN_EXPIRES_IN": "5h"
+        },
+        "db": {
+            "username": "root",
+            "password": "Root@123"
+        }
+    }
+}
