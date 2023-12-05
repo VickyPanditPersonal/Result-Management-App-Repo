@@ -13,10 +13,4 @@ router.post(
   studentController.getStudentByNameAndRollNo,
 );
 
-// router.post(
-//   "/send-mail",
-//   [authenticateToken, checkUserRole(ROLE.STUDENT)],
-//   studentController.sendMail,
-// );
-
 module.exports = router;
