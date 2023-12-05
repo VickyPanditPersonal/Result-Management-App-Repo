@@ -29,4 +29,5 @@ sequelize
   .catch(err => {
     console.error("Database initialization error:", err);
   });
+
   
