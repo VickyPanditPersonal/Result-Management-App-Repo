@@ -1,37 +1,29 @@
 const fs = require("fs");
-const List = require("collections/list");
-var blacklistedWords = null;
+var blacklistedWords = new Array;
 
 const validateName = (req, res) => {
 
-    return res.json("Validating " + isAnyMatchFound(req.body.text));
+    return res.json(req.body.text + " found as blacklisted?: " + isAnyMatchFound(req.body.text));
 };
 
 function isAnyMatchFound(str) {
     console.log("str is: " + str);
-    const content = getContent();
-    return "Validating";
-    // content.includes(str);
-}
+    console.log("blacklistedWords length is: " + blacklistedWords.length);
 
-function getContent() {
     const filePath = "./blacklist.txt";
-    console.log("entered getContent");
-    if(blacklistedWords != null) {
+    if(blacklistedWords.length > 0) {
         console.log("blacklist is not null " + blacklistedWords.length);
-        return blacklistedWords;
+        console.log("if block present? "+ blacklistedWords.includes(str));
+        return blacklistedWords.includes(str);
     }
     else {
-        console.log("else block");
         try{
-            const content = fs.readFileSync(filePath, "utf-8");
-            console.log("read file");
-            blacklistedWords = new List(content.split("\n"));
-            console.log("splitted content " + blacklistedWords.length);
+            blacklistedWords = fs.readFileSync(filePath, "utf-8").toString().split("\n");
+            console.log(blacklistedWords);
             // fs.closeSync(fs.openSync(filePath, ""));
             // console.log("file closed");
-            // blacklistedWords.
-            return blacklistedWords;
+            console.log("else block present? "+ blacklistedWords.includes(str));
+            return blacklistedWords.includes(str);
         }
         catch(error) {
             console.error("Log error", error.message);
