@@ -2,7 +2,6 @@ const fs = require("fs");
 var blacklistedWords = new Array;
 
 const validateName = (req, res) => {
-
     return res.json(req.body.text + " found as blacklisted?: " + isAnyMatchFound(req.body.text));
 };
 
