@@ -5,6 +5,7 @@ const teacherRouter = require("./routes/teacherRouter")
 const userRouter = require("./routes/userRouter")
 const authRouter = require("./routes/authRouter")
 const studentRouter = require("./routes/studentRouter")
+const validateRouter = require("./routes/validateRouter");
 
 var express = require("express");
 var app = express();
@@ -16,6 +17,7 @@ app.use("/student", studentRouter);
 app.use("/teacher", teacherRouter);
 app.use("/user", userRouter);
 app.use("/", authRouter);
+app.use("/validate", validateRouter);
 
 app.listen(port, () => {
     console.log("Server started and listening to port " + port);
